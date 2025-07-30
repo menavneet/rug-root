@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', function() {
             
             setTimeout(() => {
                 submitBtn.textContent = 'Welcome!';
-                submitBtn.style.backgroundColor = '#28a745';
+                submitBtn.style.backgroundColor = '#2c2c2c';
                 
                 setTimeout(() => {
                     popup.classList.remove('active');
@@ -104,15 +104,15 @@ document.addEventListener('DOMContentLoaded', function() {
             position: fixed;
             top: 20px;
             right: 20px;
-            background: #28a745;
+            background: #2c2c2c;
             color: white;
             padding: 1rem 1.5rem;
-            border-radius: 8px;
+            border-radius: 4px;
             font-size: 0.9rem;
-            font-weight: 500;
+            font-weight: 400;
             z-index: 1001;
             animation: slideInRight 0.3s ease;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             max-width: 300px;
         `;
         

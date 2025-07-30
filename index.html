@@ -3,95 +3,103 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>root - rug</title>
+    <title>THE RUGS STORY - Premium Rugs & Home Decor</title>
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
-        <div class="welcome-content">
-            <h1 class="welcome-title">root - rug</h1>
-            <p class="welcome-subtitle">Premium Rugs & Home Decor</p>
-            
-            <!-- E-commerce Loading Issues -->
-            <div class="loading-container">
-                <div class="loading-spinner">
-                    <div class="spinner-ring"></div>
-                    <div class="spinner-ring"></div>
-                    <div class="spinner-ring"></div>
-                </div>
-                <p class="loading-text">Loading product catalog...</p>
+    <!-- Top Banner -->
+    <div class="top-banner">
+        <p>Free Shipping Worldwide 🌍</p>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-left">
+                <a href="#" class="nav-link">Shop</a>
+                <a href="#" class="nav-link">Collections</a>
+                <a href="#" class="nav-link">About Us</a>
+                <a href="#" class="nav-link">Contact</a>
             </div>
             
-            <!-- Failed to load product sections -->
-            <div class="failed-sections">
-                <div class="section-placeholder">
-                    <div class="placeholder-header"></div>
-                    <div class="placeholder-content"></div>
-                    <div class="error-message">⚠️ Failed to load featured products</div>
-                </div>
-                
-                <div class="section-placeholder">
-                    <div class="placeholder-header"></div>
-                    <div class="placeholder-content"></div>
-                    <div class="error-message">⚠️ Unable to connect to inventory</div>
-                </div>
-                
-                <div class="section-placeholder">
-                    <div class="placeholder-header"></div>
-                    <div class="placeholder-content"></div>
-                    <div class="error-message">⚠️ Cart service unavailable</div>
-                </div>
+            <div class="logo">
+                <h1>THE RUGS STORY</h1>
             </div>
             
-            <!-- Floating particles for visual effect -->
-            <div class="particles">
-                <div class="particle"></div>
-                <div class="particle"></div>
-                <div class="particle"></div>
-                <div class="particle"></div>
-                <div class="particle"></div>
-                <div class="particle"></div>
-                <div class="particle"></div>
-                <div class="particle"></div>
+            <div class="nav-right">
+                <button class="nav-icon search-btn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <path d="m21 21-4.35-4.35"></path>
+                    </svg>
+                </button>
+                <button class="nav-icon account-btn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                </button>
+                <button class="nav-icon cart-btn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17M17 13v6a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2v-6.001"></path>
+                    </svg>
+                    <span class="cart-count">0</span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h2>Timeless Elegance</h2>
+                <h3>Iconic Design</h3>
+                <p>Discover our curated collection of premium rugs that transform your space into a sanctuary of style and comfort.</p>
+                <button class="cta-button">Shop Collection</button>
             </div>
         </div>
-        
-                 <!-- Progress bar that infinitely loads -->
-        <div class="progress-container">
-            <div class="progress-bar">
-                <div class="progress-fill"></div>
-            </div>
-            <div class="progress-text">
-                <span id="progress-percentage">0%</span>
-                <span class="progress-status">Connecting to server...</span>
+        <div class="hero-image">
+            <div class="hero-placeholder">
+                <p>Beautiful Rug Collection</p>
             </div>
         </div>
-        
-        <!-- Network status indicators -->
-        <div class="network-status">
-            <div class="status-item">
-                <span class="status-dot error"></span>
-                <span>Database connection: Failed</span>
-            </div>
-            <div class="status-item">
-                <span class="status-dot warning"></span>
-                <span>Payment gateway: Slow</span>
-            </div>
-            <div class="status-item">
-                <span class="status-dot error"></span>
-                <span>Product images: Not loading</span>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <h4>Handcrafted Quality</h4>
+                    <p>Each rug is meticulously crafted by skilled artisans using traditional techniques.</p>
+                </div>
+                <div class="feature-item">
+                    <h4>Premium Materials</h4>
+                    <p>We source only the finest natural fibers and materials for lasting beauty.</p>
+                </div>
+                <div class="feature-item">
+                    <h4>Unique Designs</h4>
+                    <p>Exclusive patterns and styles that you won't find anywhere else.</p>
+                </div>
             </div>
         </div>
-        
-        <!-- Additional loading elements -->
-        <div class="pulse-loader">
-            <div class="pulse-dot"></div>
-            <div class="pulse-dot"></div>
-            <div class="pulse-dot"></div>
+    </section>
+
+    <!-- Newsletter Popup -->
+    <div id="newsletter-popup" class="popup-overlay">
+        <div class="popup-content">
+            <button class="popup-close">&times;</button>
+            <div class="popup-logo">THE RUGS STORY</div>
+            <h3>Join Now! Get Early Access To Our Newest Collections, Design Inspirations, And Rug Trends Before Anyone Else.</h3>
+            <form class="newsletter-form">
+                <input type="email" placeholder="E-mail address" required>
+                <button type="submit" class="continue-btn">Continue</button>
+            </form>
         </div>
     </div>
-    
+
     <script src="script.js"></script>
 </body>
 </html> 

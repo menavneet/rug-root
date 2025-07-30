@@ -1,230 +1,234 @@
-// Progress bar animation with realistic loading simulation
-let progress = 0;
-let progressElement = document.getElementById('progress-percentage');
-let statusElement = document.querySelector('.progress-status');
+// THE RUGS STORY - E-commerce Functionality
 
-const loadingMessages = [
-    "Connecting to server...",
-    "Loading product catalog...",
-    "Fetching inventory data...",
-    "Connecting to payment gateway...",
-    "Loading shopping cart...",
-    "Initializing checkout system...",
-    "Connection timeout... retrying...",
-    "Database error... reconnecting...",
-    "Server overloaded... please wait...",
-    "Still loading... this is taking longer than expected..."
-];
-
-let messageIndex = 0;
-
-function updateProgress() {
-    // Simulate realistic loading with variable speed
-    const increment = Math.random() * 3 + 0.5; // Random increment between 0.5 and 3.5
-    progress += increment;
-    
-    if (progress > 100) {
-        progress = 0; // Reset for infinite loading
-        messageIndex = 0; // Reset messages
-    }
-    
-    // Update progress percentage
-    progressElement.textContent = Math.floor(progress) + '%';
-    
-    // Update loading message based on progress
-    const messageThreshold = 100 / loadingMessages.length;
-    const currentMessageIndex = Math.floor(progress / messageThreshold);
-    
-    if (currentMessageIndex !== messageIndex && currentMessageIndex < loadingMessages.length) {
-        messageIndex = currentMessageIndex;
-        statusElement.textContent = loadingMessages[messageIndex];
-        
-        // Add a subtle animation to the status text change
-        statusElement.style.opacity = '0.5';
-        setTimeout(() => {
-            statusElement.style.opacity = '0.8';
-        }, 200);
-    }
-}
-
-// Update progress every 100ms for smooth animation
-setInterval(updateProgress, 100);
-
-// Add interactive hover effects to loading elements
 document.addEventListener('DOMContentLoaded', function() {
-    const loadingSpinner = document.querySelector('.loading-spinner');
-    const progressBar = document.querySelector('.progress-bar');
-    const pulseLoader = document.querySelector('.pulse-loader');
     
-    // Add hover effect to spinner
-    loadingSpinner.addEventListener('mouseenter', function() {
-        this.style.transform = 'scale(1.1)';
-        this.style.transition = 'transform 0.3s ease';
+    // Newsletter Popup Management
+    const popup = document.getElementById('newsletter-popup');
+    const popupClose = document.querySelector('.popup-close');
+    const newsletterForm = document.querySelector('.newsletter-form');
+    
+    // Show popup after 3 seconds
+    setTimeout(() => {
+        popup.classList.add('active');
+    }, 3000);
+    
+    // Close popup when clicking close button
+    popupClose.addEventListener('click', function() {
+        popup.classList.remove('active');
     });
     
-    loadingSpinner.addEventListener('mouseleave', function() {
-        this.style.transform = 'scale(1)';
+    // Close popup when clicking outside
+    popup.addEventListener('click', function(e) {
+        if (e.target === popup) {
+            popup.classList.remove('active');
+        }
     });
     
-    // Add click effect to progress bar
-    progressBar.addEventListener('click', function() {
-        const fill = this.querySelector('.progress-fill');
-        fill.style.animationDuration = '2s'; // Speed up animation temporarily
+    // Handle newsletter form submission
+    newsletterForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const email = this.querySelector('input[type="email"]').value;
         
-        setTimeout(() => {
-            fill.style.animationDuration = '8s'; // Reset to normal speed
-        }, 2000);
+        if (email) {
+            // Simulate subscription process
+            const submitBtn = this.querySelector('.continue-btn');
+            const originalText = submitBtn.textContent;
+            
+            submitBtn.textContent = 'Subscribing...';
+            submitBtn.disabled = true;
+            
+            setTimeout(() => {
+                submitBtn.textContent = 'Welcome!';
+                submitBtn.style.backgroundColor = '#28a745';
+                
+                setTimeout(() => {
+                    popup.classList.remove('active');
+                    // Reset form
+                    this.reset();
+                    submitBtn.textContent = originalText;
+                    submitBtn.disabled = false;
+                    submitBtn.style.backgroundColor = '';
+                }, 1500);
+            }, 1000);
+        }
     });
     
-    // Create floating text animations
-    createFloatingText();
-});
-
-function createFloatingText() {
-    const container = document.querySelector('.container');
-    const floatingTexts = ['Connection lost...', 'Retrying...', 'Server error...', 'Please wait...', 'Loading failed...', 'Timeout...'];
+    // Cart functionality
+    let cartCount = 0;
+    const cartCountElement = document.querySelector('.cart-count');
+    const cartBtn = document.querySelector('.cart-btn');
     
-    setInterval(() => {
-        const text = document.createElement('div');
-        text.textContent = floatingTexts[Math.floor(Math.random() * floatingTexts.length)];
-        text.style.cssText = `
-            position: absolute;
-            color: rgba(255, 255, 255, 0.3);
-            font-size: 0.8rem;
-            pointer-events: none;
-            top: ${Math.random() * 100}%;
-            left: ${Math.random() * 100}%;
-            animation: floatText 4s ease-out forwards;
-            z-index: 5;
+    // Add smooth scroll for CTA button
+    const ctaButton = document.querySelector('.cta-button');
+    ctaButton.addEventListener('click', function() {
+        // Simulate adding to cart or navigating to shop
+        cartCount++;
+        cartCountElement.textContent = cartCount;
+        
+        // Add animation to cart
+        cartBtn.style.transform = 'scale(1.2)';
+        setTimeout(() => {
+            cartBtn.style.transform = 'scale(1)';
+        }, 200);
+        
+        // Show feedback
+        showNotification('Item added to collection!');
+    });
+    
+    // Navigation interactions
+    const navLinks = document.querySelectorAll('.nav-link');
+    navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const linkText = this.textContent;
+            showNotification(`Navigating to ${linkText}...`);
+        });
+    });
+    
+    // Search functionality
+    const searchBtn = document.querySelector('.search-btn');
+    searchBtn.addEventListener('click', function() {
+        showNotification('Search feature coming soon!');
+    });
+    
+    // Account functionality
+    const accountBtn = document.querySelector('.account-btn');
+    accountBtn.addEventListener('click', function() {
+        showNotification('Account login coming soon!');
+    });
+    
+    // Notification system
+    function showNotification(message) {
+        const notification = document.createElement('div');
+        notification.style.cssText = `
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #28a745;
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            z-index: 1001;
+            animation: slideInRight 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            max-width: 300px;
         `;
         
-        container.appendChild(text);
+        notification.textContent = message;
+        document.body.appendChild(notification);
         
-        // Remove element after animation
         setTimeout(() => {
-            if (text.parentNode) {
-                text.parentNode.removeChild(text);
+            notification.style.animation = 'slideOutRight 0.3s ease forwards';
+            setTimeout(() => notification.remove(), 300);
+        }, 3000);
+    }
+    
+    // Smooth scrolling for internal links
+    function smoothScroll(target) {
+        document.querySelector(target).scrollIntoView({
+            behavior: 'smooth'
+        });
+    }
+    
+    // Add loading states for buttons
+    function addLoadingState(button, originalText, loadingText) {
+        button.textContent = loadingText;
+        button.disabled = true;
+        button.style.opacity = '0.7';
+        
+        setTimeout(() => {
+            button.textContent = originalText;
+            button.disabled = false;
+            button.style.opacity = '1';
+        }, 1500);
+    }
+    
+    // Lazy loading effect for hero section
+    const heroText = document.querySelector('.hero-text');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
             }
-        }, 4000);
-    }, 3000);
-}
+        });
+    });
+    
+    // Initial styling for animation
+    heroText.style.opacity = '0';
+    heroText.style.transform = 'translateY(30px)';
+    heroText.style.transition = 'all 0.8s ease';
+    
+    observer.observe(heroText);
+    
+    // Add hover effects to feature items
+    const featureItems = document.querySelectorAll('.feature-item');
+    featureItems.forEach(item => {
+        item.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-5px)';
+            this.style.transition = 'transform 0.3s ease';
+        });
+        
+        item.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0)';
+        });
+    });
+});
 
-// Add CSS for floating text animation
+// Add CSS animations
 const style = document.createElement('style');
 style.textContent = `
-    @keyframes floatText {
-        0% {
+    @keyframes slideInRight {
+        from { 
+            transform: translateX(100%); 
+            opacity: 0; 
+        }
+        to { 
+            transform: translateX(0); 
+            opacity: 1; 
+        }
+    }
+    
+    @keyframes slideOutRight {
+        from { 
+            transform: translateX(0); 
+            opacity: 1; 
+        }
+        to { 
+            transform: translateX(100%); 
+            opacity: 0; 
+        }
+    }
+    
+    .hero-text h2, .hero-text h3 {
+        animation: fadeInUp 0.8s ease forwards;
+    }
+    
+    .hero-text h3 {
+        animation-delay: 0.2s;
+    }
+    
+    .hero-text p {
+        animation: fadeInUp 0.8s ease forwards;
+        animation-delay: 0.4s;
+    }
+    
+    .cta-button {
+        animation: fadeInUp 0.8s ease forwards;
+        animation-delay: 0.6s;
+    }
+    
+    @keyframes fadeInUp {
+        from {
             opacity: 0;
-            transform: translateY(20px) scale(0.8);
+            transform: translateY(30px);
         }
-        20% {
-            opacity: 0.6;
-            transform: translateY(0) scale(1);
-        }
-        80% {
-            opacity: 0.3;
-            transform: translateY(-30px) scale(1);
-        }
-        100% {
-            opacity: 0;
-            transform: translateY(-50px) scale(0.8);
+        to {
+            opacity: 1;
+            transform: translateY(0);
         }
     }
 `;
 document.head.appendChild(style);
-
-// Add particle interaction
-document.addEventListener('mousemove', function(e) {
-    const particles = document.querySelectorAll('.particle');
-    const mouseX = e.clientX / window.innerWidth;
-    const mouseY = e.clientY / window.innerHeight;
-    
-    particles.forEach((particle, index) => {
-        const speed = (index + 1) * 0.5;
-        const x = (mouseX - 0.5) * speed;
-        const y = (mouseY - 0.5) * speed;
-        
-        particle.style.transform = `translate(${x}px, ${y}px)`;
-        particle.style.transition = 'transform 0.3s ease';
-    });
-});
-
-// Site title glitch effect
-const welcomeTitle = document.querySelector('.welcome-title');
-const titleMessages = ['root - rug', 'r00t - rug', 'root - r?g', 'ro?t - rug', 'ERROR: 404', 'root - rug'];
-let titleIndex = 0;
-
-setInterval(() => {
-    if (Math.random() > 0.7) { // 30% chance of glitch
-        welcomeTitle.style.opacity = '0';
-        setTimeout(() => {
-            titleIndex = (titleIndex + 1) % titleMessages.length;
-            welcomeTitle.textContent = titleMessages[titleIndex];
-            welcomeTitle.style.opacity = '1';
-            
-            // Reset to normal after glitch
-            if (titleMessages[titleIndex] !== 'root - rug') {
-                setTimeout(() => {
-                    welcomeTitle.textContent = 'root - rug';
-                    titleIndex = 0;
-                }, 1000);
-            }
-        }, 200);
-    }
-}, 3000);
-
-// Add random error popups
-function showRandomError() {
-    const errors = [
-        "⚠️ Failed to load product images",
-        "❌ Payment gateway disconnected", 
-        "⚠️ Inventory service unavailable",
-        "❌ Unable to process requests",
-        "⚠️ Database connection lost"
-    ];
-    
-    const errorDiv = document.createElement('div');
-    errorDiv.style.cssText = `
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        background: rgba(255, 71, 87, 0.9);
-        color: white;
-        padding: 1rem;
-        border-radius: 8px;
-        font-size: 0.9rem;
-        z-index: 1000;
-        animation: slideInRight 0.5s ease;
-        max-width: 300px;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-    `;
-    
-    errorDiv.textContent = errors[Math.floor(Math.random() * errors.length)];
-    document.body.appendChild(errorDiv);
-    
-    setTimeout(() => {
-        errorDiv.style.animation = 'slideOutRight 0.5s ease forwards';
-        setTimeout(() => errorDiv.remove(), 500);
-    }, 3000);
-}
-
-// Show random errors occasionally
-setInterval(() => {
-    if (Math.random() > 0.8) { // 20% chance
-        showRandomError();
-    }
-}, 8000);
-
-// Add CSS for error animations
-const errorStyle = document.createElement('style');
-errorStyle.textContent = `
-    @keyframes slideInRight {
-        from { transform: translateX(100%); opacity: 0; }
-        to { transform: translateX(0); opacity: 1; }
-    }
-    @keyframes slideOutRight {
-        from { transform: translateX(0); opacity: 1; }
-        to { transform: translateX(100%); opacity: 0; }
-    }
-`;
-document.head.appendChild(errorStyle); 

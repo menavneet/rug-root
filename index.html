@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>root - rug</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="welcome-content">
+            <h1 class="welcome-title">root - rug</h1>
+            <p class="welcome-subtitle">Premium Rugs & Home Decor</p>
+            
+            <!-- E-commerce Loading Issues -->
+            <div class="loading-container">
+                <div class="loading-spinner">
+                    <div class="spinner-ring"></div>
+                    <div class="spinner-ring"></div>
+                    <div class="spinner-ring"></div>
+                </div>
+                <p class="loading-text">Loading product catalog...</p>
+            </div>
+            
+            <!-- Failed to load product sections -->
+            <div class="failed-sections">
+                <div class="section-placeholder">
+                    <div class="placeholder-header"></div>
+                    <div class="placeholder-content"></div>
+                    <div class="error-message">⚠️ Failed to load featured products</div>
+                </div>
+                
+                <div class="section-placeholder">
+                    <div class="placeholder-header"></div>
+                    <div class="placeholder-content"></div>
+                    <div class="error-message">⚠️ Unable to connect to inventory</div>
+                </div>
+                
+                <div class="section-placeholder">
+                    <div class="placeholder-header"></div>
+                    <div class="placeholder-content"></div>
+                    <div class="error-message">⚠️ Cart service unavailable</div>
+                </div>
+            </div>
+            
+            <!-- Floating particles for visual effect -->
+            <div class="particles">
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+            </div>
+        </div>
+        
+                 <!-- Progress bar that infinitely loads -->
+        <div class="progress-container">
+            <div class="progress-bar">
+                <div class="progress-fill"></div>
+            </div>
+            <div class="progress-text">
+                <span id="progress-percentage">0%</span>
+                <span class="progress-status">Connecting to server...</span>
+            </div>
+        </div>
+        
+        <!-- Network status indicators -->
+        <div class="network-status">
+            <div class="status-item">
+                <span class="status-dot error"></span>
+                <span>Database connection: Failed</span>
+            </div>
+            <div class="status-item">
+                <span class="status-dot warning"></span>
+                <span>Payment gateway: Slow</span>
+            </div>
+            <div class="status-item">
+                <span class="status-dot error"></span>
+                <span>Product images: Not loading</span>
+            </div>
+        </div>
+        
+        <!-- Additional loading elements -->
+        <div class="pulse-loader">
+            <div class="pulse-dot"></div>
+            <div class="pulse-dot"></div>
+            <div class="pulse-dot"></div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html> 

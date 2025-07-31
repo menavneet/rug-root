@@ -1,16 +1,26 @@
-# THE RUGS STORY | Premium E-commerce Website
+# RUGS AND ROOTS | Premium E-commerce Website
 
-A beautiful, professional e-commerce website for premium rugs and home decor. This project showcases modern web design principles with clean aesthetics, smooth interactions, and a focus on user experience.
+A comprehensive e-commerce platform for premium rugs and home decor featuring real product catalogs, interactive shopping experiences, and professional design. Built with modern web technologies and a focus on user experience.
 
 ## ✨ Features
 
-- **Modern Design**: Clean, professional layout with premium typography
-- **Responsive Navigation**: Sticky header with search, account, and cart functionality
-- **Hero Section**: Compelling product showcase with call-to-action
-- **Newsletter Popup**: Elegant subscription modal with smooth animations
-- **Interactive Elements**: Hover effects, smooth transitions, and micro-interactions
-- **Mobile Responsive**: Optimized for all device sizes
-- **Professional Branding**: Consistent brand identity throughout
+### **🏠 Multi-Page Website**
+- **Homepage**: Hero section, product collections, and featured products
+- **Product Categories**: Dedicated pages for Modern and Traditional rugs
+- **About Us**: Company story, values, and team information
+- **Contact**: Professional contact form with validation and info
+
+### **🛒 E-commerce Functionality**
+- **Product Catalog**: Real product images organized by categories
+- **Shopping Cart**: Add to cart, cart counter, and mini cart display
+- **Quick View**: Modal product previews with detailed information
+- **Interactive Elements**: Hover effects, product overlays, and animations
+
+### **🎨 Professional Design**
+- **Clean Layout**: Modern, minimalist design with premium typography
+- **Responsive Design**: Optimized for all device sizes and screen types
+- **Image Integration**: Real product photography from your image collection
+- **Consistent Branding**: Professional color scheme and typography
 
 ## 🚀 Live Demo
 
@@ -18,9 +28,24 @@ Once deployed, your site will be available at: `https://[your-username].github.i
 
 ## 🎯 What's Included
 
-- `index.html` - Main HTML structure with semantic markup
-- `styles.css` - Complete CSS with animations and responsive design
-- `script.js` - Interactive JavaScript functionality
+### **📄 Pages**
+- `index.html` - Homepage with hero, collections, and featured products
+- `modern-rugs.html` - Modern rugs category with 9 products
+- `traditional-rugs.html` - Traditional rugs category with 9 products  
+- `about.html` - Company story, values, and team
+- `contact.html` - Contact form and business information
+
+### **🎨 Styling & Scripts**
+- `styles.css` - Complete responsive CSS with product styling
+- `script.js` - Main JavaScript functionality
+- `products.js` - E-commerce and cart functionality
+- `contact.js` - Contact form validation and submission
+
+### **📸 Product Catalog**
+- **Modern Rugs**: Beige Harmony, Ink Path, Noir Illusion, Earth Echo, Picasso Lines, The Eclipse, Woolora, Linea, Cloud Rug
+- **Traditional Rugs**: Royal Rootwork, Echoes of the Canopy, Desert Jewel, Blue Mirage, Petal Whisper, Serenity Lines, Tropic Maze, Ombre Royale, Aqua Plane
+
+### **⚙️ Deployment**
 - `.github/workflows/deploy.yml` - GitHub Actions for automatic deployment
 
 ## 🛠️ Setup GitHub Pages

@@ -1,4 +1,4 @@
-// THE RUGS STORY - E-commerce Functionality
+// RUGS AND ROOTS - E-commerce Functionality
 
 document.addEventListener('DOMContentLoaded', function() {
     

@@ -2,6 +2,28 @@
 
 document.addEventListener('DOMContentLoaded', function() {
     
+    // Preloader Management
+    const preloader = document.querySelector('.preloader');
+    
+    // Hide preloader after page loads
+    window.addEventListener('load', function() {
+        setTimeout(() => {
+            if (preloader) {
+                preloader.classList.add('hide');
+                // Remove preloader from DOM after animation completes
+                setTimeout(() => {
+                    preloader.style.display = 'none';
+                    document.body.style.overflow = ''; // Restore scrolling
+                }, 600); // Match the CSS transition duration
+            }
+        }, 1000); // Show preloader for at least 1 second
+    });
+    
+    // Prevent scrolling while preloader is active
+    if (preloader) {
+        document.body.style.overflow = 'hidden';
+    }
+    
     // Newsletter Popup Management
     const popup = document.getElementById('newsletter-popup');
     const popupClose = document.querySelector('.popup-close');
@@ -100,6 +122,54 @@ document.addEventListener('DOMContentLoaded', function() {
     accountBtn.addEventListener('click', function() {
         showNotification('Account login coming soon!');
     });
+    
+    // Mobile Menu functionality
+    const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+    const mobileMenu = document.querySelector('.mobile-menu');
+    const mobileMenuOverlay = document.querySelector('.mobile-menu-overlay');
+    const mobileMenuClose = document.querySelector('.mobile-menu-close');
+    
+    // Check if mobile menu elements exist (they might not on all pages)
+    if (mobileMenuToggle && mobileMenu && mobileMenuOverlay && mobileMenuClose) {
+        // Open mobile menu
+        mobileMenuToggle.addEventListener('click', function() {
+            mobileMenu.classList.add('active');
+            mobileMenuOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        });
+        
+        // Close mobile menu - close button
+        mobileMenuClose.addEventListener('click', function() {
+            closeMobileMenu();
+        });
+        
+        // Close mobile menu - overlay click
+        mobileMenuOverlay.addEventListener('click', function() {
+            closeMobileMenu();
+        });
+        
+        // Close mobile menu - escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
+                closeMobileMenu();
+            }
+        });
+        
+        // Close mobile menu when clicking on navigation links
+        const mobileNavLinks = document.querySelectorAll('.mobile-menu-links .nav-link');
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                // Close menu after a short delay to allow navigation
+                setTimeout(closeMobileMenu, 100);
+            });
+        });
+        
+        function closeMobileMenu() {
+            mobileMenu.classList.remove('active');
+            mobileMenuOverlay.classList.remove('active');
+            document.body.style.overflow = ''; // Restore scrolling
+        }
+    }
     
     // Notification system
     function showNotification(message) {

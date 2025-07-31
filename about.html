@@ -8,6 +8,19 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="preloader-content">
+            <div class="preloader-text">loading side</div>
+            <div class="preloader-spinner"></div>
+            <div class="preloader-dots">
+                <div class="preloader-dot"></div>
+                <div class="preloader-dot"></div>
+                <div class="preloader-dot"></div>
+            </div>
+        </div>
+    </div>
+
     <!-- Top Banner -->
     <div class="top-banner">
         <p>Free Shipping Worldwide 🌍</p>
@@ -28,6 +41,13 @@
             </div>
             
             <div class="nav-right">
+                <button class="nav-icon mobile-menu-toggle">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                </button>
                 <button class="nav-icon search-btn">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <circle cx="11" cy="11" r="8"></circle>
@@ -49,6 +69,21 @@
             </div>
         </nav>
     </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu-overlay"></div>
+    <div class="mobile-menu">
+        <div class="mobile-menu-header">
+            <h3>Menu</h3>
+            <button class="mobile-menu-close">&times;</button>
+        </div>
+        <div class="mobile-menu-links">
+            <a href="index.html#shop" class="nav-link">Shop</a>
+            <a href="index.html#collections" class="nav-link">Collections</a>
+            <a href="about.html" class="nav-link active">About Us</a>
+            <a href="contact.html" class="nav-link">Contact</a>
+        </div>
+    </div>
 
     <!-- Page Header -->
     <section class="page-header">

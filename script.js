@@ -75,27 +75,79 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
-    // Cart functionality
-    let cartCount = 0;
+    // Cart functionality - integrated with sessionStorage
     const cartCountElement = document.querySelector('.cart-count');
     const cartBtn = document.querySelector('.cart-btn');
     
+    // Initialize cart count from sessionStorage
+    function updateCartCount() {
+        const cart = JSON.parse(sessionStorage.getItem('rugsCart')) || [];
+        const cartCount = cart.reduce((total, item) => total + item.quantity, 0);
+        if (cartCountElement) {
+            cartCountElement.textContent = cartCount;
+        }
+    }
+    
+    // Update cart count on page load
+    updateCartCount();
+    
+    // Cart button click handler - show view cart
+    if (cartBtn) {
+        cartBtn.addEventListener('click', function() {
+            // If products.js is loaded, use its showViewCart function
+            if (typeof showViewCart === 'function') {
+                showViewCart();
+            } else {
+                // Fallback for pages without products.js
+                const cart = JSON.parse(sessionStorage.getItem('rugsCart')) || [];
+                if (cart.length === 0) {
+                    showNotification('Your cart is empty');
+                } else {
+                    showNotification(`You have ${cart.length} items in your cart`);
+                }
+            }
+        });
+    }
+    
     // Add smooth scroll for CTA button
     const ctaButton = document.querySelector('.cta-button');
-    ctaButton.addEventListener('click', function() {
-        // Simulate adding to cart or navigating to shop
-        cartCount++;
-        cartCountElement.textContent = cartCount;
-        
-        // Add animation to cart
-        cartBtn.style.transform = 'scale(1.2)';
-        setTimeout(() => {
-            cartBtn.style.transform = 'scale(1)';
-        }, 200);
-        
-        // Show feedback
-        showNotification('Item added to collection!');
-    });
+    if (ctaButton) {
+        ctaButton.addEventListener('click', function() {
+            // Add a featured product to cart for demo
+            const featuredProduct = {
+                id: Date.now() + Math.random(),
+                name: 'Featured Collection Item',
+                price: '₹15,999',
+                image: 'images_raw/modern_rugs/noir_illusionproduct.jpg',
+                quantity: 1
+            };
+            
+            let cart = JSON.parse(sessionStorage.getItem('rugsCart')) || [];
+            
+            // Check if product already exists
+            const existingProduct = cart.find(item => item.name === featuredProduct.name);
+            if (existingProduct) {
+                existingProduct.quantity += 1;
+            } else {
+                cart.push(featuredProduct);
+            }
+            
+            // Save to sessionStorage
+            sessionStorage.setItem('rugsCart', JSON.stringify(cart));
+            updateCartCount();
+            
+            // Add animation to cart
+            if (cartBtn) {
+                cartBtn.style.transform = 'scale(1.2)';
+                setTimeout(() => {
+                    cartBtn.style.transform = 'scale(1)';
+                }, 200);
+            }
+            
+            // Show feedback
+            showNotification('Item added to collection!');
+        });
+    }
     
     // Navigation interactions
     const navLinks = document.querySelectorAll('.nav-link');

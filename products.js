@@ -129,12 +129,17 @@ document.addEventListener('DOMContentLoaded', function() {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 const img = entry.target;
-                img.style.opacity = '0';
                 img.style.transition = 'opacity 0.3s ease';
                 
-                img.onload = function() {
-                    this.style.opacity = '1';
-                };
+                // Check if image is already loaded
+                if (img.complete && img.naturalHeight !== 0) {
+                    img.style.opacity = '1';
+                } else {
+                    img.style.opacity = '0';
+                    img.onload = function() {
+                        this.style.opacity = '1';
+                    };
+                }
                 
                 observer.unobserve(img);
             }

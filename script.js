@@ -79,9 +79,13 @@ document.addEventListener('DOMContentLoaded', function() {
     const navLinks = document.querySelectorAll('.nav-link');
     navLinks.forEach(link => {
         link.addEventListener('click', function(e) {
-            e.preventDefault();
-            const linkText = this.textContent;
-            showNotification(`Navigating to ${linkText}...`);
+            // Only prevent default for anchor links that don't have actual pages
+            if (this.getAttribute('href').startsWith('#')) {
+                e.preventDefault();
+                const linkText = this.textContent;
+                showNotification(`${linkText} section coming soon!`);
+            }
+            // Let actual page links (about.html, contact.html) work normally
         });
     });
     
